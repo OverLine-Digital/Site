@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+  --font-mono: var(--font-heading), ui-monospace, monospace;
+  --font-voice: var(--font-poppins), var(--font-heading), system-ui, sans-serif;
+}
+
+.light {
+  color-scheme: light;
+  /* OverLine Digital — mode clair (éditeur "light theme") */
+  --background: #f4f3ee;
+  --foreground: #1e1f1c;
+  --card: rgba(30, 31, 28, 0.03);
+  --card-foreground: #1e1f1c;
+  --popover: #ffffff;
+  --popover-foreground: #1e1f1c;
+  --primary: #0a7d34;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(30, 31, 28, 0.05);
+  --secondary-foreground: #1e1f1c;
+  --muted: rgba(30, 31, 28, 0.04);
+  --muted-foreground: #6b6d64;
+  --accent: rgba(10, 125, 52, 0.12);
+  --accent-foreground: #075e27;
+  --destructive: oklch(0.6 0.2 25);
+  --border: rgba(30, 31, 28, 0.12);
+  --input: rgba(30, 31, 28, 0.16);
+  --ring: rgba(10, 125, 52, 0.45);
+  --radius: 0.35rem;
+}
+
+.dark {
+  color-scheme: dark;
+  /* OverLine Digital — mode sombre (style "aperçu" encre/lime/cyan) */
+  --background: #0c1420;
+  --foreground: #ffffff;
+  --card: rgba(255, 255, 255, 0.03);
+  --card-foreground: #ffffff;
+  --popover: #0f1826;
+  --popover-foreground: #ffffff;
+  --primary: #7cf7b0;
+  --primary-foreground: #0c1420;
+  --secondary: rgba(255, 255, 255, 0.06);
+  --secondary-foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.05);
+  --muted-foreground: #c9d3de;
+  --accent: rgba(62, 224, 232, 0.14);
+  --accent-foreground: #3ee0e8;
+  --destructive: oklch(0.65 0.2 25);
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.14);
+  --ring: rgba(124, 247, 176, 0.4);
+  --radius: 0.6rem;
+  --cyan: #3ee0e8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply bg-background scroll-smooth;
+    overflow-x: hidden;
+  }
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(159, 202, 138, 0.3);
+    color: #1a140f;
+  }
+}
+
+@layer utilities {
+  /* Cartes "papier" — bordure nette, pas de flou verre générique */
+  .glass {
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+  .glass-strong {
+    background: color-mix(in srgb, var(--background) 88%, var(--foreground) 4%);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .glow-blue {
+    box-shadow: 0 0 40px rgba(159, 202, 138, 0.24);
+  }
+  .text-glow {
+    text-shadow: 0 0 30px rgba(159, 202, 138, 0.35);
+  }
+}
